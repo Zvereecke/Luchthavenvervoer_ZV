@@ -21,7 +21,7 @@ public class TestClass {
             }
         }
 
-    //een array maken van testt
+
     @Test
     public void test_set_Strategy_for_all_strategies(){
         for (int i = 0; i<4; i++){
