@@ -9,25 +9,25 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestClass {
 
-    private static TransportationStrategy testtransport[];
+    private static TransportationStrategy testtransport[] = {new TransportationStrategy(), new TransportationStrategy(), new TransportationStrategy(), new TransportationStrategy()};
     private static Transportmethod methoden [] = {new Auto(), new Trein(),new Bus (), new Taxi()};
 
     @BeforeAll
     public static void setUp(){
-        for (int i = 0; i<4; i++){
-            testtransport[i] = new TransportationStrategy();
-        }
+        int methodencounter = 0;
         for (TransportationStrategy t : testtransport){
-            for (int c = 0; c<4; c++){
-                t.setStrategy(methoden[c]);
+                t.setStrategy(methoden[methodencounter]);
+                methodencounter += 1;
             }
         }
-    }
 
     //een array maken van testt
     @Test
-    public void test_set_Strategy_trein(){
-        assertTrue(methoden[1].getClass().isInstance(testtransport[1].getStrategy()));
+    public void test_set_Strategy_for_all_strategies(){
+        for (int i = 0; i<4; i++){
+            assertTrue(methoden[i].getClass().isInstance(testtransport[i].getStrategy()));
+        }
+
     }
 
 
